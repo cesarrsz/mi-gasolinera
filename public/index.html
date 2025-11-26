@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siba Combustibles</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        </header>
+
+    <section class="hero">
+        <h1>Siba Combustibles</h1>
+        <p>"Calidad, Servicio y Confianza 24/7"</p>
+        <button>Ver Ubicación y Horarios</button>
+        <div>
+            </div>
+    </section>
+
+    <section class="precios-actuales">
+        <h2>Precios Actuales (MXN por Litro)</h2>
+        <div class="precios-grid">
+            <div class="tarjeta-precio">
+                <h3>Magna</h3>
+                <p class="precio" id="precio-magna">--.--</p>
+                <p class="descripcion">Cuidado del motor</p>
+            </div>
+            <div class="tarjeta-precio">
+                <h3>Premium</h3>
+                <p class="precio" id="precio-premium">--.--</p>
+                <p class="descripcion">Protege tu motor</p>
+            </div>
+            <div class="tarjeta-precio">
+                <h3>Diésel</h3>
+                <p class="precio" id="precio-diesel">--.--</p>
+                <p class="descripcion">Preferido para el transporte</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="calidad-servicios">
+        <h2>Nuestra Calidad y Servicios</h2>
+        </section>
+
+    <section class="horarios">
+        <h2>Horarios</h2>
+        <div class="horario-detalle">
+            <p>Despacho de Combustible (Guardia): <span id="horario-combustible"></span></p>
+            <p>Atención en Caja / Oficina: <span id="horario-caja"></span></p>
+            </div>
+    </section>
+
+    <section class="metodos-pago">
+        <h2>Métodos de Pago</h2>
+        <div id="lista-metodos-pago">
+            </div>
+    </section>
+
+    <section class="buzon-sugerencias">
+        <h2>Buzón de Sugerencias y Quejas</h2>
+        <form id="form-sugerencias">
+            <label for="nombre">Tu Nombre (Opcional):</label>
+            <input type="text" id="nombre" name="nombre">
+
+            <label for="correo">Tu Correo Electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+
+            <label for="telefono">Teléfono (Opcional):</label>
+            <input type="tel" id="telefono" name="telefono">
+
+            <label for="mensaje">Comentario o Sugerencia:</label>
+            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+            <label for="archivos">Adjuntar Archivos (PDF, fotos):</label>
+            <input type="file" id="archivos" name="archivos" multiple accept=".pdf,image/*">
+
+            <button type="submit">Enviar Mensaje</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Siba Combustibles. Todos los derechos reservados.</p>
+        <p>Contacto: <span id="footer-telefono"></span> | Correo: <span id="footer-correo"></span></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
