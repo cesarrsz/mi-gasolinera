@@ -63,4 +63,4 @@ async function updateData(data) {
     }
 }
 
-module.exports = { pool, getPublicData, updateData };
+module.exports = { pool, getPublicData, updateData };;
