@@ -3,114 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Control - Siba</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .header-siba { background-color: #00604A; color: white; }
-    </style>
+    <title>Panel de Control - Siba Combustibles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sibaGreen: '#00604A',
+                        sibaRed: '#E0301E',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-light">
-    <nav class="navbar navbar-expand-lg header-siba shadow">
-        <div class="container">
-            <span class="navbar-brand mb-0 h1 fw-bold text-white">⚙️ Admin Siba Combustibles</span>
-            <div class="d-flex">
-                <a href="/" target="_blank" class="btn btn-outline-light btn-sm me-2">Ver Página Web</a>
-                <a href="/admin/logout" class="btn btn-danger btn-sm">Cerrar Sesión</a>
+<body class="bg-gray-100 min-h-screen pb-20">
+
+    <nav class="bg-sibaGreen text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-3">
+                    <span class="text-xl font-black tracking-tight">⚙️ Siba Admin</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/" target="_blank" class="text-sm font-medium hover:text-gray-200 transition flex items-center">
+                        <span>Ver Página Web</span>
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                    <a href="/admin/logout" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-full text-sm font-bold transition shadow">
+                        Cerrar Sesión
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div class="container mt-5 pb-5">
-        <h2 class="mb-4 text-center text-dark">Editar Información del Sitio</h2>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
         
-        <form action="/admin/update" method="POST">
+        <div class="mb-8 text-center">
+            <h2 class="text-3xl font-bold text-gray-800">Editar Información del Sitio</h2>
+            <p class="text-gray-500 mt-1">Cambia los precios y horarios en tiempo real.</p>
+        </div>
+
+        <form action="/admin/update" method="POST" class="space-y-8">
             
-            <div class="card mb-4 shadow border-0">
-                <div class="card-header bg-white border-bottom fw-bold text-success">
-                    ⛽ Precios de Combustible
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="bg-gray-800 px-6 py-4 border-b border-gray-700">
+                    <h3 class="text-lg font-bold text-white flex items-center">
+                        ⛽ Precios de Combustible
+                    </h3>
                 </div>
-                <div class="card-body bg-white">
-                    <div class="row g-3">
-                        <div class="col-md-4">
-                            <label class="form-label fw-bold text-success">Magna (Verde)</label>
-                            <div class="input-group">
-                                <span class="input-group-text">$</span>
-                                <input type="number" step="0.01" name="magna" class="form-control form-control-lg fw-bold" value="<%= data.prices.magna %>">
+                <div class="p-8">
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="bg-green-50 p-6 rounded-xl border-2 border-green-500/20 text-center hover:border-green-500 transition">
+                            <label class="block text-green-800 font-extrabold mb-2 text-lg">MAGNA (Verde)</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-3 text-green-700 text-xl font-bold">$</span>
+                                <input type="number" step="0.01" name="magna" value="<%= data.prices.magna %>"
+                                    class="w-full pl-8 pr-4 py-2 text-3xl font-black text-center text-gray-800 bg-white border border-green-300 rounded-lg focus:ring-4 focus:ring-green-500/30 outline-none">
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <label class="form-label fw-bold text-danger">Premium (Roja)</label>
-                            <div class="input-group">
-                                <span class="input-group-text">$</span>
-                                <input type="number" step="0.01" name="premium" class="form-control form-control-lg fw-bold" value="<%= data.prices.premium %>">
+                        
+                        <div class="bg-red-50 p-6 rounded-xl border-2 border-red-500/20 text-center hover:border-red-500 transition">
+                            <label class="block text-red-800 font-extrabold mb-2 text-lg">PREMIUM (Roja)</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-3 text-red-700 text-xl font-bold">$</span>
+                                <input type="number" step="0.01" name="premium" value="<%= data.prices.premium %>"
+                                    class="w-full pl-8 pr-4 py-2 text-3xl font-black text-center text-gray-800 bg-white border border-red-300 rounded-lg focus:ring-4 focus:ring-red-500/30 outline-none">
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <label class="form-label fw-bold text-dark">Diésel (Negra)</label>
-                            <div class="input-group">
-                                <span class="input-group-text">$</span>
-                                <input type="number" step="0.01" name="diesel" class="form-control form-control-lg fw-bold" value="<%= data.prices.diesel %>">
+
+                        <div class="bg-gray-50 p-6 rounded-xl border-2 border-gray-500/20 text-center hover:border-gray-800 transition">
+                            <label class="block text-gray-800 font-extrabold mb-2 text-lg">DIÉSEL (Negra)</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-3 text-gray-700 text-xl font-bold">$</span>
+                                <input type="number" step="0.01" name="diesel" value="<%= data.prices.diesel %>"
+                                    class="w-full pl-8 pr-4 py-2 text-3xl font-black text-center text-gray-800 bg-white border border-gray-300 rounded-lg focus:ring-4 focus:ring-gray-500/30 outline-none">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card mb-4 shadow border-0">
-                <div class="card-header bg-white border-bottom fw-bold text-primary">
-                    ℹ️ Información General
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Eslogan Principal (Bajo el título)</label>
-                        <input type="text" name="slogan" class="form-control" value="<%= data.slogan %>">
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-sibaGreen px-6 py-3">
+                        <h3 class="text-white font-bold">ℹ️ Información General</h3>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label fw-bold">Teléfono General</label>
-                            <input type="text" name="phone" class="form-control" value="<%= data.phone %>">
+                    <div class="p-6 space-y-5">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Eslogan (Header)</label>
+                            <input type="text" name="slogan" value="<%= data.slogan %>" class="w-full p-3 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-sibaGreen/30 outline-none">
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label fw-bold">Correo de Contacto</label>
-                            <input type="email" name="email" class="form-control" value="<%= data.email %>">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Teléfono</label>
+                            <input type="text" name="phone" value="<%= data.phone %>" class="w-full p-3 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-sibaGreen/30 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Correo Electrónico</label>
+                            <input type="email" name="email" value="<%= data.email %>" class="w-full p-3 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-sibaGreen/30 outline-none">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-yellow-600 px-6 py-3">
+                        <h3 class="text-white font-bold">🕒 Horarios de Atención</h3>
+                    </div>
+                    <div class="p-6 space-y-5">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Horario Bombas (Guardia)</label>
+                            <input type="text" name="pump_hours" value="<%= data.pump_hours %>" class="w-full p-3 border border-yellow-200 rounded-lg bg-yellow-50 font-medium text-yellow-800 focus:ring-2 focus:ring-yellow-500/30 outline-none">
+                        </div>
+                        
+                        <div class="border-t pt-4 mt-4">
+                            <p class="text-xs font-bold text-gray-400 uppercase mb-3 tracking-wider">Oficina / Caja</p>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm text-gray-600 w-20">Mañana:</span>
+                                    <input type="text" name="office_morning" value="<%= data.office_morning %>" class="flex-1 p-2 border rounded text-sm">
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm text-gray-600 w-20">Tarde:</span>
+                                    <input type="text" name="office_afternoon" value="<%= data.office_afternoon %>" class="flex-1 p-2 border rounded text-sm">
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm text-gray-600 w-20">Comida:</span>
+                                    <input type="text" name="office_lunch" value="<%= data.office_lunch %>" class="flex-1 p-2 border rounded text-sm">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card mb-4 shadow border-0">
-                <div class="card-header bg-white border-bottom fw-bold text-warning">
-                    🕒 Horarios
-                </div>
-                <div class="card-body">
-                    <div class="mb-4">
-                        <label class="form-label fw-bold">Horario Bombas (Guardia)</label>
-                        <input type="text" name="pump_hours" class="form-control bg-light" value="<%= data.pump_hours %>">
-                    </div>
-                    <h6 class="border-bottom pb-2 mb-3">Horario de Oficina / Caja</h6>
-                    <div class="row g-3">
-                        <div class="col-md-4">
-                            <label class="form-label small text-muted">Turno Mañana</label>
-                            <input type="text" name="office_morning" class="form-control" value="<%= data.office_morning %>">
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label small text-muted">Turno Tarde</label>
-                            <input type="text" name="office_afternoon" class="form-control" value="<%= data.office_afternoon %>">
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label small text-muted">Hora de Comida</label>
-                            <input type="text" name="office_lunch" class="form-control" value="<%= data.office_lunch %>">
-                        </div>
-                    </div>
+            <div class="fixed bottom-0 left-0 w-full bg-white border-t p-4 shadow-lg md:static md:bg-transparent md:border-0 md:shadow-none md:p-0">
+                <div class="max-w-5xl mx-auto">
+                    <button type="submit" 
+                        class="w-full bg-sibaRed hover:bg-red-700 text-white text-xl font-black py-4 rounded-xl shadow-xl transform transition hover:-translate-y-1 flex justify-center items-center gap-3">
+                        <span>💾 GUARDAR TODOS LOS CAMBIOS</span>
+                    </button>
                 </div>
             </div>
 
-            <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-success btn-lg py-3 fw-bold shadow">
-                    💾 GUARDAR TODOS LOS CAMBIOS
-                </button>
-            </div>
         </form>
     </div>
+
 </body>
 </html>
