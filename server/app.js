@@ -32,13 +32,22 @@ app.use(express.static(path.join(__dirname, '../public')));
 // Servir uploads por si subes imágenes temporalmente
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
-// --- Importar Rutas ---
+// ... tus imports de rutas
 const publicRoutes = require('./routes/public');
 const adminRoutes = require('./routes/admin');
 
-// --- Usar Rutas ---
-app.use('/api', publicRoutes);     // Rutas para datos y correos
-app.use('/admin', adminRoutes);    // Rutas protegidas del panel
+// --- INICIO DE TEST ---
+console.log('--> CHEQUEO DE RUTAS <--');
+console.log('1. Ruta Pública es tipo:', typeof publicRoutes);
+console.log('2. Ruta Admin es tipo:', typeof adminRoutes); 
+console.log('3. Contenido de Admin:', adminRoutes); 
+console.log('-----------------------');
+// --- FIN DE TEST ---
+
+// Usar Rutas
+app.use('/api', publicRoutes);
+app.use('/admin', adminRoutes); // <--- Línea del error
+
 
 // --- Ruta Principal (Carga tu index.html al entrar a localhost:3000) ---
 app.get('/', (req, res) => {
