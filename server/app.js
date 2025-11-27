@@ -33,7 +33,6 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // --- 5. Importar Rutas ---
-// Asegúrate de que estos archivos existan y tengan 'module.exports = router;' al final
 const publicRoutes = require('./routes/public');
 const adminRoutes = require('./routes/admin');
 
@@ -49,4 +48,5 @@ app.get('/', (req, res) => {
 
 // --- 8. Iniciar Servidor ---
 app.listen(PORT, () => {
-    console.log(`✅ Servidor corriendo en: http://localhost
+    console.log(`✅ Servidor corriendo en: http://localhost:${PORT}`);
+});
