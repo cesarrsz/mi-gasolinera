@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Admin - Siba</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #00604A; display: flex; align-items: center; justify-content: center; height: 100vh; }
+        .card { width: 100%; max-width: 400px; }
+        .btn-success { background-color: #E0301E; border-color: #E0301E; } /* Rojo de tu marca */
+        .btn-success:hover { background-color: #b92b1b; }
+    </style>
+</head>
+<body>
+    <div class="card shadow rounded-3">
+        <div class="card-body p-5">
+            <div class="text-center mb-4">
+                <h3 class="fw-bold text-secondary">Admin Siba</h3>
+                <p class="text-muted small">Ingresa tus credenciales</p>
+            </div>
+            
+            <% if (error) { %>
+                <div class="alert alert-danger text-center" role="alert">
+                    <%= error %>
+                </div>
+            <% } %>
+
+            <form action="/admin/login" method="POST">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Usuario</label>
+                    <input type="text" name="username" class="form-control" required autofocus>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Contraseña</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100 py-2 fw-bold">ENTRAR</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
