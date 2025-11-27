@@ -25,7 +25,7 @@ app.use(session({
 // --- 3. Motor de Plantillas (Para el Panel Admin) ---
 app.set('view engine', 'ejs');
 // Importante: Las vistas están en la carpeta 'views' fuera de 'server'
-app.set('views', path.join(__dirname, '../views'));
+app.set('views', path.join(__dirname, '../views')); // Busca afuera, en la raíz
 
 // --- 4. Archivos Estáticos (Tu página web pública) ---
 app.use(express.static(path.join(__dirname, '../public')));
