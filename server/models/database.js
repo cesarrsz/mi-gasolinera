@@ -1,7 +1,6 @@
 const mysql = require('mysql2/promise');
-require('dotenv').config(); // Cargar variables del .env
+require('dotenv').config();
 
-// Crear el pool de conexiones usando las variables de entorno
 const pool = mysql.createPool({
     host: process.env.DB_HOST || 'localhost',
     user: process.env.DB_USER || 'root',
@@ -12,7 +11,7 @@ const pool = mysql.createPool({
     queueLimit: 0
 });
 
-// Función para obtener toda la info pública
+// Obtener datos para la web pública
 async function getPublicData() {
     try {
         const [pricesRows] = await pool.query('SELECT tipo_combustible, precio FROM precios');
@@ -30,23 +29,25 @@ async function getPublicData() {
 
         return response;
     } catch (error) {
-        console.error("Error en getPublicData:", error);
+        console.error("Error base de datos:", error);
         throw error;
     }
 }
 
-// Función para actualizar datos (Admin)
+// Guardar cambios del Admin
 async function updateData(data) {
     const connection = await pool.getConnection();
     try {
         await connection.beginTransaction();
 
+        // Guardar precios
         if (data.prices) {
             for (const [tipo, precio] of Object.entries(data.prices)) {
                 await connection.query('UPDATE precios SET precio = ? WHERE tipo_combustible = ?', [precio, tipo]);
             }
         }
 
+        // Guardar textos (horarios, teléfono, etc)
         const keys = ['slogan', 'phone', 'email', 'pump_hours', 'office_morning', 'office_afternoon', 'office_lunch'];
         for (const key of keys) {
             if (data[key] !== undefined) {
@@ -63,4 +64,4 @@ async function updateData(data) {
     }
 }
 
-module.exports = { pool, getPublicData, updateData };;
+module.exports = { pool, getPublicData, updateData };

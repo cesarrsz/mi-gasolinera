@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const publicController = require('../controllers/publicController'); // Asegúrate de tener este archivo también
+const publicController = require('../controllers/publicController');
 const multer = require('multer');
 
-const upload = multer({ dest: 'uploads/' });
+// Configuración para subir archivos adjuntos
+const upload = multer({ 
+    dest: 'uploads/',
+    limits: { fileSize: 5 * 1024 * 1024 } // 5MB máximo
+});
 
-// Rutas
 router.get('/data', publicController.getData);
 router.post('/send-email', upload.array('attachments'), publicController.sendEmail);
 
-module.exports = router; // <--- ¡Esto es lo más importante!
+module.exports = router;

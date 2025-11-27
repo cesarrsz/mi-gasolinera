@@ -2,19 +2,19 @@ const express = require('express');
 const router = express.Router();
 const adminController = require('../controllers/adminController');
 
-// GET /admin -> Mostrar Login
+// Mostrar Login
 router.get('/', adminController.showLogin);
 
-// POST /admin/login -> Procesar credenciales
+// Procesar Login (POST)
 router.post('/login', adminController.login);
 
-// GET /admin/dashboard -> Panel de Control (Protegido)
+// Panel Principal (Dashboard)
 router.get('/dashboard', adminController.showDashboard);
 
-// POST /admin/update -> Guardar cambios
+// Guardar Cambios
 router.post('/update', adminController.updateSettings);
 
-// GET /admin/logout -> Salir
+// Cerrar Sesión
 router.get('/logout', adminController.logout);
 
 module.exports = router;

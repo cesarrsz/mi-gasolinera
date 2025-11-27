@@ -1,35 +1,10 @@
-{
-  "name": "mi-gasolinera",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cesarrsz/mi-gasolinera.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/cesarrsz/mi-gasolinera/issues"
-  },
-  "homepage": "https://github.com/cesarrsz/mi-gasolinera#readme",
-  "dependencies": {
-    "body-parser": "^2.2.1",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "ejs": "^3.1.10",
-    "express": "^5.1.0",
-    "express-session": "^1.18.2",
-    "multer": "^2.0.2",
-    "mysql2": "^3.15.3",
-    "nodemailer": "^7.0.11"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.11"
-  }
-}
+PORT=3000
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=tu_password_real  <-- ¡PON TU CONTRASEÑA AQUÍ!
+DB_NAME=siba_gasolinera
+SESSION_SECRET=palabra_secreta_siba
+# Configuración de correo (opcional por ahora)
+EMAIL_SERVICE=gmail
+EMAIL_USER=tu@gmail.com
+EMAIL_PASS=tu_app_password
