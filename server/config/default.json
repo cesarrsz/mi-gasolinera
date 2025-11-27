@@ -2,13 +2,13 @@
     "db": {
         "host": "localhost",
         "user": "root",
-        "password": "your_db_password",
+        "password": "Siba2020",
         "database": "siba_gasolinera"
     },
     "email": {
         "service": "gmail",
         "user": "tu_correo@gmail.com",
-        "password": "tu_password_de_aplicacion_gmail" // Usa una contraseña de aplicación si es Gmail
+        "password": "tu_password_de_aplicacion_gmail"
     },
     "adminEmail": "correo_destino_sugerencias@example.com"
 }
